@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "1089764237950",
+    "project_number": "${FIREBASE_MESSAGING_SENDER_ID}",
     "project_id": "english-learing-app",
     "storage_bucket": "english-learing-app.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1089764237950:android:6f1fd5cf60a2253632ae2f",
+        "mobilesdk_app_id": "1:${FIREBASE_MESSAGING_SENDER_ID}:android:6f1fd5cf60a2253632ae2f",
         "android_client_info": {
           "package_name": "com.database.app"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBpBcnRBMDHA0sZ45otaeEiHo9vFtce6vM"
+          "current_key": "${FIREBASE_ANDROID_API_KEY}"
         }
       ],
       "services": {
@@ -26,7 +26,7 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1089764237950:android:e18b1d14e56b2ec832ae2f",
+        "mobilesdk_app_id": "${FIREBASE_APP_ID_ANDROID}",
         "android_client_info": {
           "package_name": "com.example.do_an_test"
         }
@@ -34,7 +34,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBpBcnRBMDHA0sZ45otaeEiHo9vFtce6vM"
+          "current_key": "${FIREBASE_ANDROID_API_KEY}"
         }
       ],
       "services": {
