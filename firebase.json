@@ -1,0 +1,25 @@
+{
+    "flutter": {
+        "platforms": {
+            "android": {
+                "default": {
+                    "projectId": "english-learing-app",
+                    "appId": "1:1089764237950:android:e18b1d14e56b2ec832ae2f",
+                    "fileOutput": "android/app/google-services.json"
+                }
+            },
+            "dart": {
+                "lib/firebase_options.dart": {
+                    "projectId": "english-learing-app",
+                    "configurations": {
+                        "android": "1:1089764237950:android:e18b1d14e56b2ec832ae2f",
+                        "ios": "1:1089764237950:ios:4aa78e00274af39832ae2f",
+                        "macos": "1:1089764237950:ios:4aa78e00274af39832ae2f",
+                        "web": "1:1089764237950:web:457c428056330fd232ae2f",
+                        "windows": "1:1089764237950:web:0d2dfd265d8349de32ae2f"
+                    }
+                }
+            }
+        }
+    }
+}

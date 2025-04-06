@@ -1,0 +1,191 @@
+Dưới đây là tài liệu chi tiết cho cơ sở dữ liệu của dự án học tiếng Anh:
+
+---
+
+## 1. Bảng `user`
+   - **Mô tả**: Lưu trữ thông tin người dùng.
+   - **Cột**:
+     - `id`: Khóa chính của người dùng.
+     - `created_at`: Thời gian tạo tài khoản.
+     - `updated_at`: Thời gian cập nhật thông tin gần nhất.
+     - `name`: Tên người dùng.
+     - `email`: Email của người dùng, giá trị duy nhất.
+
+---
+
+## 2. Bảng `process_level`
+   - **Mô tả**: Theo dõi tiến trình học của người dùng tại các cấp độ (level).
+   - **Cột**:
+     - `id`: Khóa chính.
+     - `user_id`: Khóa ngoại tham chiếu đến bảng `user`.
+     - `level_id`: Khóa ngoại tham chiếu đến bảng `level`.
+     - `status`: Trạng thái tiến trình (`finish`, `in process`, `complete`).
+     - `progress_percentage`: Tỷ lệ hoàn thành (%) của người dùng trong cấp độ.
+     - `last_accessed`: Thời điểm cuối cùng người dùng truy cập.
+
+---
+
+## 3. Bảng `process_chapter`
+   - **Mô tả**: Theo dõi tiến trình học của người dùng tại các chương (chapter).
+   - **Cột**:
+     - `id`: Khóa chính.
+     - `user_id`: Khóa ngoại tham chiếu đến bảng `user`.
+     - `chapter_id`: Khóa ngoại tham chiếu đến bảng `chapter`.
+     - `status`: Trạng thái tiến trình (`finish`, `in process`, `complete`).
+     - `progress_percentage`: Tỷ lệ hoàn thành (%) của người dùng trong chương.
+     - `last_accessed`: Thời điểm cuối cùng người dùng truy cập.
+
+---
+
+## 4. Bảng `process_lesson`
+   - **Mô tả**: Theo dõi tiến trình học của người dùng trong từng bài học.
+   - **Cột**:
+     - `id`: Khóa chính.
+     - `user_id`: Khóa ngoại tham chiếu đến bảng `user`.
+     - `lesson_id`: Khóa ngoại tham chiếu đến bảng `lesson`.
+     - `status`: Trạng thái tiến trình (`finish`, `in process`, `complete`).
+     - `progress_percentage`: Tỷ lệ hoàn thành (%) của người dùng trong bài học.
+     - `last_accessed`: Thời điểm cuối cùng người dùng truy cập.
+
+---
+
+## 5. Bảng `grammar_learned`
+   - **Mô tả**: Lưu trữ thông tin các ngữ pháp mà người dùng đã học.
+   - **Cột**:
+     - `id`: Khóa chính.
+     - `grammar_id`: Khóa ngoại tham chiếu đến bảng `grammar`.
+     - `user_id`: Khóa ngoại tham chiếu đến bảng `user`.
+     - `learned_at`: Thời điểm người dùng học ngữ pháp này.
+
+---
+
+## 6. Bảng `vocabulary_learned`
+   - **Mô tả**: Lưu trữ thông tin từ vựng mà người dùng đã học.
+   - **Cột**:
+     - `id`: Khóa chính.
+     - `vocabulary_id`: Khóa ngoại tham chiếu đến bảng `vocabulary`.
+     - `user_id`: Khóa ngoại tham chiếu đến bảng `user`.
+     - `learned_at`: Thời điểm người dùng học từ vựng này.
+
+---
+
+## 7. Bảng `grammar`
+   - **Mô tả**: Lưu trữ thông tin về các khái niệm ngữ pháp.
+   - **Cột**:
+     - `id`: Khóa chính.
+     - `name`: Tên ngữ pháp.
+     - `description`: Mô tả chi tiết về ngữ pháp.
+     - `example`: Ví dụ sử dụng ngữ pháp.
+     - `lesson_ref`: Khóa ngoại tham chiếu đến bảng `lesson`.
+     - `media_type`: Loại phương tiện (hình ảnh, video) hỗ trợ ngữ pháp.
+     - `media_url`: URL dẫn tới phương tiện.
+     - `tags`: Các thẻ để phân loại ngữ pháp.
+
+---
+
+## 8. Bảng `vocabulary`
+   - **Mô tả**: Lưu trữ thông tin về từ vựng.
+   - **Cột**:
+     - `id`: Khóa chính.
+     - `english_word`: Từ tiếng Anh.
+     - `meaning`: Nghĩa của từ.
+     - `vietnamese_word`: Từ tiếng Việt.
+     - `example_english`: Ví dụ bằng tiếng Anh.
+     - `example_vietnamese`: Ví dụ bằng tiếng Việt.
+     - `part_of_speech`: Loại từ (danh từ, động từ, tính từ).
+     - `media_type`: Loại phương tiện hỗ trợ từ vựng.
+     - `media_url`: URL dẫn tới phương tiện.
+     - `lesson_ref`: Khóa ngoại tham chiếu đến bảng `lesson`.
+
+---
+
+## 9. Bảng `level`
+   - **Mô tả**: Lưu trữ thông tin các cấp độ học.
+   - **Cột**:
+     - `id`: Khóa chính.
+     - `name`: Tên cấp độ.
+     - `order`: Thứ tự cấp độ.
+     - `description`: Mô tả cấp độ.
+
+---
+
+## 10. Bảng `chapter`
+   - **Mô tả**: Lưu trữ thông tin các chương trong một cấp độ.
+   - **Cột**:
+     - `id`: Khóa chính.
+     - `level_id`: Khóa ngoại tham chiếu đến bảng `level`.
+     - `name`: Tên chương.
+     - `order`: Thứ tự của chương.
+     - `description`: Mô tả chương.
+
+---
+
+## 11. Bảng `lesson`
+   - **Mô tả**: Lưu trữ thông tin các bài học trong một chương.
+   - **Cột**:
+     - `id`: Khóa chính.
+     - `chapter_id`: Khóa ngoại tham chiếu đến bảng `chapter`.
+     - `name`: Tên bài học.
+     - `order`: Thứ tự của bài học.
+     - `description`: Mô tả bài học.
+
+---
+
+## 12. Bảng `lessonContentFlow`
+   - **Mô tả**: Quản lý luồng nội dung trong bài học, bao gồm các hoạt động và phương tiện hỗ trợ.
+   - **Cột**:
+     - `id`: Khóa chính.
+     - `lesson_id`: Khóa ngoại tham chiếu đến bảng `lesson`.
+     - `order`: Thứ tự của nội dung trong bài học.
+     - `activity`: Loại hoạt động.
+     - `description`: Mô tả hoạt động.
+     - `type_media`: Loại phương tiện.
+     - `url_media`: URL dẫn tới phương tiện.
+     - `duration`: Thời lượng đề xuất cho hoạt động này.
+
+---
+
+## 13. Bảng `activity_type` (tùy chọn)
+   - **Mô tả**: Định nghĩa các loại hoạt động có thể có trong bài học.
+   - **Cột**:
+     - `id`: Khóa chính.
+     - `name`: Tên hoạt động.
+     - `description`: Mô tả hoạt động.
+
+---
+
+## 14. Bảng `lesson_vocabulary`
+   - **Mô tả**: Liên kết từ vựng với các bài học.
+   - **Cột**:
+     - `lesson_id`: Khóa ngoại tham chiếu đến bảng `lesson`.
+     - `vocabulary_id`: Khóa ngoại tham chiếu đến bảng `vocabulary`.
+
+---
+
+## 15. Bảng `lesson_grammar`
+   - **Mô tả**: Liên kết ngữ pháp với các bài học.
+   - **Cột**:
+     - `lesson_id`: Khóa ngoại tham chiếu đến bảng `lesson`.
+     - `grammar_id`: Khóa ngoại tham chiếu đến bảng `grammar`.
+
+---
+
+## 16. Bảng `grammar_media` (tùy chọn)
+   - **Mô tả**: Lưu trữ phương tiện cho ngữ pháp (nếu có nhiều phương tiện).
+   - **Cột**:
+     - `grammar_id`: Khóa ngoại tham chiếu đến bảng `grammar`.
+     - `media_type`: Loại phương tiện.
+     - `media_url`: URL dẫn tới phương tiện.
+
+---
+
+## 17. Bảng `vocabulary_media` (tùy chọn)
+   - **Mô tả**: Lưu trữ phương tiện cho từ vựng (nếu có nhiều phương tiện).
+   - **Cột**:
+     - `vocabulary_id`: Khóa ngoại tham chiếu đến bảng `vocabulary`.
+     - `media_type`: Loại phương tiện.
+     - `media_url`: URL dẫn tới phương tiện.
+
+--- 
+
+Các bảng và mối quan hệ trong cấu trúc cơ sở dữ liệu này được thiết kế nhằm hỗ trợ quản lý và theo dõi tiến trình học, nội dung học và tài liệu phương tiện một cách hiệu quả cho ứng dụng học tiếng Anh.
